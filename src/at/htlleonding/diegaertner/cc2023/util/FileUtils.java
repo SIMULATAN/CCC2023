@@ -10,7 +10,7 @@ public class FileUtils {
 
 	public static List<String> getInput(String filename) {
 		try {
-			return Files.readAllLines(Paths.get("input/" + filename + ".txt"));
+			return Files.readAllLines(Paths.get("input/" + filename + ".in"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

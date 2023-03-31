@@ -27,6 +27,7 @@ public abstract class Level {
 				.replace("%sublevel%", "example");
 
 			Object result = solve(FileUtils.getInput(levelName), -1);
+			System.out.println("Result: " + result);
 			FileUtils.write(levelName, Objects.toString(result));
 			return;
 		}
@@ -38,6 +39,7 @@ public abstract class Level {
 				.replace("%sublevel%", String.valueOf(i));
 
 			Object result = solve(FileUtils.getInput(levelName), i);
+			System.out.println("Result: " + result);
 			FileUtils.write(levelName, Objects.toString(result));
 		}
 	}
