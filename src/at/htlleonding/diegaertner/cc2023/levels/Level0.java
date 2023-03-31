@@ -13,8 +13,9 @@ public class Level0 extends Level {
 	}
 
 	@Override
-	public void solve(List<String> input, int sublevel) {
+	public Object solve(List<String> input, int sublevel) {
 		System.out.println("Input for sublevel " + sublevel + ":");
 		input.forEach(System.out::println);
+		return "testing output";
 	}
 }

@@ -3,8 +3,9 @@ package at.htlleonding.diegaertner.cc2023;
 import at.htlleonding.diegaertner.cc2023.util.FileUtils;
 
 import java.util.List;
+import java.util.Objects;
 
-public class Level {
+public abstract class Level {
 
 	private final int level;
 	protected int subLevels;
@@ -21,25 +22,25 @@ public class Level {
 	public final void solve() {
 		System.out.println("---- Solving level " + level + " ----");
 		if (debug) {
-			solve(FileUtils.getInput(levelTemplate
-					.replace("%level%", String.valueOf(level))
-					.replace("%sublevel%", "example")),
-				-1
-			);
+			String levelName = levelTemplate
+				.replace("%level%", String.valueOf(level))
+				.replace("%sublevel%", "example");
+
+			Object result = solve(FileUtils.getInput(levelName), -1);
+			FileUtils.write(levelName, Objects.toString(result));
 			return;
 		}
 
 		for (int i = 1; i <= subLevels; i++) {
 			System.out.println("---- Solving sublevel " + i + " ----");
-			solve(FileUtils.getInput(levelTemplate
-					.replace("%level%", String.valueOf(level))
-					.replace("%sublevel%", String.valueOf(i))),
-				i
-			);
+			String levelName = levelTemplate
+				.replace("%level%", String.valueOf(level))
+				.replace("%sublevel%", String.valueOf(i));
+
+			Object result = solve(FileUtils.getInput(levelName), i);
+			FileUtils.write(levelName, Objects.toString(result));
 		}
 	}
 
-	public void solve(List<String> input, int subLevel) {
-		// implemented by inheritors
-	}
+	protected abstract Object solve(List<String> input, int subLevel);
 }
