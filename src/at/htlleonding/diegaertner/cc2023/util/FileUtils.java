@@ -19,6 +19,9 @@ public class FileUtils {
 
 	public static void write(String filename, String text) {
 		try {
+			System.out.println("\n\n\n");
+			System.out.println(text);
+			System.out.println(filename + ".out");
 			Files.write(Paths.get("output/" + filename + ".out"), text.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
